@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "ruby_lsp",
+      "name": "Debug current file",
+      "request": "launch",
+      "command": "ruby",
+      "file": "${file}"
+    },
+    {
+      "type": "ruby_lsp",
+      "name": "Attach debugger",
+      "request": "attach"
+    }
+  ]
+}

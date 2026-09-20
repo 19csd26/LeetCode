@@ -1,0 +1,62 @@
+# LeetCode practice repo: teaching-oriented scripts, not a library.
+AllCops:
+  NewCops: enable            # silences the "new cops added" nag
+  TargetRubyVersion: 3.4
+  Exclude:
+    - "vendor/**/*"
+    - ".ruby-lsp/**/*"
+
+# --- Top-level scripts, not documented classes -------------------------------
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/StringLiterals:            # pure taste; not worth the churn here
+  Enabled: false
+
+# --- Preserve the deliberate formatting of the teaching code -----------------
+# Hand-aligned test tables, and `W = 4  # column width`.
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+  AllowBeforeTrailingComments: true
+
+# The test tables use trailing commas so rows can be added cleanly.
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+# `next if num == val` is the algorithm's drop branch, not an early return;
+# a blank line after it would split the five-line core apart.
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# `format('%-6s #%d', ...)` positional tokens are clearer than annotated ones.
+Style/FormatStringToken:
+  EnforcedStyle: unannotated
+
+# Branches that print different text but return the same value read better
+# spelled out than collapsed.
+Lint/DuplicateBranch:
+  Enabled: false
+
+# --- Naming and size: `m`, `n`, `k`, `p1` are the problem statements' names ---
+Naming/MethodParameterName:
+  MinNameLength: 1
+
+# A traced algorithm is one long linear method by design; splitting it up
+# defeats the point of reading it top to bottom.
+Layout/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  Max: 45
+Metrics/AbcSize:
+  Max: 45
+Metrics/CyclomaticComplexity:
+  Max: 12
+Metrics/PerceivedComplexity:
+  Max: 12
+Metrics/BlockLength:
+  Max: 40
+Metrics/ParameterLists:
+  Max: 8

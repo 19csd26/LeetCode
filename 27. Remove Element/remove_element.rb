@@ -43,8 +43,12 @@ tests = [
   [[0, 0, 1],                0, [1]],
 ]
 
-[[:remove_element, method(:remove_element)],
- [:remove_element_swap, method(:remove_element_swap)]].each do |name, fn|
+implementations = [
+  [:remove_element,      method(:remove_element)],
+  [:remove_element_swap, method(:remove_element_swap)],
+]
+
+implementations.each do |name, fn|
   puts "== #{name} =="
   tests.each_with_index do |(nums, val, want), idx|
     input = nums.dup
